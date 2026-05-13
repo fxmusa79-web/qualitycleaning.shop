@@ -1,126 +1,11 @@
-"use client";
-
-import { useEffect, useRef } from "react";
+import Link from "next/link";
+import { HeroSection } from "@/components/HeroSection";
+import { LeadForm } from "@/components/LeadForm";
 
 export default function Home() {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const cursor = cursorRef.current;
-    const ring = ringRef.current;
-    if (!cursor || !ring) return;
-
-    const c = cursor;
-    const r = ring;
-
-    let mx = 0;
-    let my = 0;
-    let rx = 0;
-    let ry = 0;
-
-    const onMove = (e: MouseEvent) => {
-      mx = e.clientX;
-      my = e.clientY;
-    };
-    document.addEventListener("mousemove", onMove);
-
-    let rafId = 0;
-    function animateCursor() {
-      c.style.left = mx + "px";
-      c.style.top = my + "px";
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      r.style.left = rx + "px";
-      r.style.top = ry + "px";
-      rafId = requestAnimationFrame(animateCursor);
-    }
-    rafId = requestAnimationFrame(animateCursor);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    document
-      .querySelectorAll(
-        ".dienst-card, .stap, .prijs-card, .over-tekst, .contact-info, .contact-cta",
-      )
-      .forEach((el) => {
-        const htmlEl = el as HTMLElement;
-        htmlEl.style.opacity = "0";
-        htmlEl.style.transform = "translateY(24px)";
-        htmlEl.style.transition = "opacity 0.7s ease, transform 0.7s ease";
-        observer.observe(el);
-      });
-
-    return () => {
-      document.removeEventListener("mousemove", onMove);
-      cancelAnimationFrame(rafId);
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <>
-<div className="cursor" ref={cursorRef} />
-<div className="cursor-ring" ref={ringRef} />
-
-
-<nav>
-  <a href="#" className="logo">Quality <span>Cleaning</span></a>
-  <ul>
-    <li><a href="#diensten">Diensten</a></li>
-    <li><a href="#werkwijze">Werkwijze</a></li>
-    <li><a href="#prijzen">Prijzen</a></li>
-    <li><a href="#over">Over ons</a></li>
-    <li><a href="#contact" className="nav-cta">Offerte</a></li>
-  </ul>
-</nav>
-
-
-<section className="hero">
-  <div className="hero-bg"></div>
-  <div className="hero-line"></div>
-  <div className="hero-content">
-    <div className="hero-tag">Mobiele reiniging — Heel Nederland</div>
-    <h1>Stralend<br /><em>schoon.</em><br />Gegarandeerd.</h1>
-    <p className="hero-sub">Professionele reiniging met osmosewater technologie. Van gevels tot zonnepanelen, van dakpannen tot uw auto — wij komen naar u toe.</p>
-    <div className="hero-actions">
-      <a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20een%20offerte%20aanvragen" className="btn-primary" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp offerte
-      </a>
-      <a href="#diensten" className="btn-secondary">
-        Bekijk diensten
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-  <div className="hero-stats">
-    <div className="stat">
-      <div className="stat-num">100%</div>
-      <div className="stat-label">Osmosewater</div>
-    </div>
-    <div className="stat">
-      <div className="stat-num">5+</div>
-      <div className="stat-label">Diensten</div>
-    </div>
-    <div className="stat">
-      <div className="stat-num">NL</div>
-      <div className="stat-label">Heel Nederland</div>
-    </div>
-  </div>
-</section>
-
+      <HeroSection />
 
 <div className="usp-band">
   <div className="usp-items">
@@ -167,37 +52,51 @@ export default function Home() {
       <div className="dienst-num">01</div>
       <svg className="dienst-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
       <h3>Gevelreiniging</h3>
-      <p>Gevels vrij van mos, algen en aanslag. Met onze hogedruk en osmosewater technologie reinigen we iedere gevel grondig en veilig.</p>
+      <p>Gevels vrij van mos, algen en aanslag. Met osmosewater en hogedruk reinigen we iedere gevel grondig en veilig — geen schade aan voeg of baksteen.</p>
+      <Link href="/gevelreiniging" className="dienst-card-more">
+        Meer over gevelreiniging
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </Link>
     </div>
     <div className="dienst-card">
       <div className="dienst-num">02</div>
-      <svg className="dienst-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      <h3>Dakpannen reinigen</h3>
-      <p>Mos en algen op uw dak verkorten de levensduur. Wij reinigen uw dakpannen professioneel en behandelen ze optioneel met een beschermlaag.</p>
+      <svg className="dienst-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z"/></svg>
+      <h3>Glazenwasser &amp; ramen</h3>
+      <p>Professionele glazenwasser aan huis: ramen, kozijnen en serres. Osmosewater droogt straalvrij — ook hogere ruiten bereiken wij mobiel met telescooptechniek.</p>
+      <Link href="/glazenwassen" className="dienst-card-more">
+        Meer over glazenwassen
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </Link>
     </div>
     <div className="dienst-card">
       <div className="dienst-num">03</div>
       <svg className="dienst-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2M8 12h8M12 12v4"/></svg>
       <h3>Zonnepanelen reinigen</h3>
-      <p>Vuile zonnepanelen leveren tot 30% minder energie. Wij reinigen ze met zuiver osmosewater — geen zeep, geen resten, maximaal rendement.</p>
+      <p>Vuile zonnepanelen leveren tot 30% minder energie. Wij reinigen met zuiver osmosewater — geen zeep, geen resten, maximaal rendement.</p>
+      <Link href="/zonnepanelen-reinigen" className="dienst-card-more">
+        Meer over zonnepanelen reinigen
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </Link>
     </div>
     <div className="dienst-card">
       <div className="dienst-num">04</div>
-      <svg className="dienst-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z"/></svg>
-      <h3>Glazen wassen</h3>
-      <p>Van ramen en serres tot winkelruiten. Met onze telescoopstang en osmosewater bereiken wij iedere hoogte, altijd vlekkeloos en droog.</p>
+      <svg className="dienst-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+      <h3>Autoreiniging aan huis</h3>
+      <p>Professionele autowasbeurt bij u thuis of op kantoor. Exterieur reiniging met osmosewater voor een vlekkeloos en droog resultaat.</p>
+      <Link href="/autoreiniging" className="dienst-card-more">
+        Meer over autoreiniging
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </Link>
     </div>
     <div className="dienst-card">
       <div className="dienst-num">05</div>
-      <svg className="dienst-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
-      <h3>Autoreiniging aan huis</h3>
-      <p>Professionele autowasbeurt bij u thuis of op kantoor. Exterieur reiniging met osmosewater voor een perfect droog en vlekkeloos resultaat.</p>
-    </div>
-    <div className="dienst-card">
-      <div className="dienst-num">06</div>
       <svg className="dienst-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
       <h3>Maatwerk opdrachten</h3>
-      <p>Heeft u een specifieke reinigingswens? Wij denken graag met u mee. Neem contact op voor een vrijblijvende offerte op maat.</p>
+      <p>Heeft u een specifieke reinigingswens? Wij denken graag met u mee voor een vrijblijvende offerte op maat.</p>
+      <Link href="/contact" className="dienst-card-more">
+        Neem contact op
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </Link>
     </div>
   </div>
 </section>
@@ -256,7 +155,7 @@ export default function Home() {
       <div className="prijs-label">Particulier</div>
       <h3>Autoreiniging</h3>
       <div className="prijs-from">Vanaf</div>
-      <div className="prijs-amount">€49</div>
+      <div className="prijs-amount">€49,99</div>
       <div className="prijs-unit">per beurt</div>
       <ul className="prijs-features">
         <li>Exterieur wassen</li>
@@ -264,7 +163,7 @@ export default function Home() {
         <li>Vlekkeloos droog resultaat</li>
         <li>Aan huis service</li>
       </ul>
-      <a href="https://wa.me/31600000000?text=Ik%20wil%20een%20offerte%20voor%20autoreiniging" className="btn-outline" target="_blank">Vraag offerte aan</a>
+      <a href="https://wa.me/31600000000?text=Ik%20wil%20een%20offerte%20voor%20autoreiniging" className="btn-outline" target="_blank" rel="noopener noreferrer">Vraag offerte aan</a>
     </div>
     <div className="prijs-card featured">
       <div className="prijs-label">Meest gevraagd</div>
@@ -278,21 +177,21 @@ export default function Home() {
         <li>Rendement controle</li>
         <li>Garantie op resultaat</li>
       </ul>
-      <a href="https://wa.me/31600000000?text=Ik%20wil%20een%20offerte%20voor%20zonnepanelen%20reinigen" className="btn-outline solid" target="_blank">Vraag offerte aan</a>
+      <a href="https://wa.me/31600000000?text=Ik%20wil%20een%20offerte%20voor%20zonnepanelen%20reinigen" className="btn-outline solid" target="_blank" rel="noopener noreferrer">Vraag offerte aan</a>
     </div>
     <div className="prijs-card">
       <div className="prijs-label">Woning</div>
-      <h3>Gevel & dak</h3>
+      <h3>Gevel &amp; glazen</h3>
       <div className="prijs-from">Op maat</div>
       <div className="prijs-amount">€—</div>
       <div className="prijs-unit">vrijblijvende offerte</div>
       <ul className="prijs-features">
         <li>Gevelreiniging</li>
-        <li>Dakpannen reinigen</li>
-        <li>Glazen wassen</li>
+        <li>Glazenwasser / ramen</li>
+        <li>Combinatie met zonnepanelen</li>
         <li>Combinatiepakketten</li>
       </ul>
-      <a href="https://wa.me/31600000000?text=Ik%20wil%20een%20offerte%20voor%20gevel%20of%20dak%20reiniging" className="btn-outline" target="_blank">Vraag offerte aan</a>
+      <a href="https://wa.me/31600000000?text=Ik%20wil%20een%20offerte%20voor%20gevel%20of%20glazenwassen" className="btn-outline" target="_blank" rel="noopener noreferrer">Vraag offerte aan</a>
     </div>
   </div>
 </section>
@@ -336,7 +235,7 @@ export default function Home() {
     <div className="contact-info">
       <h3>Wij staan voor u klaar</h3>
       <p>Vrijblijvende offerte binnen 24 uur. Geen verborgen kosten, geen gedoe — gewoon een eerlijke prijs voor uitstekend werk.</p>
-      <a href="https://wa.me/31600000000" className="contact-method" target="_blank">
+      <a href="https://wa.me/31600000000" className="contact-method" target="_blank" rel="noopener noreferrer">
         <div className="contact-method-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </div>
@@ -361,32 +260,27 @@ export default function Home() {
         <span>Heel Nederland — wij komen naar u toe</span>
       </div>
     </div>
-    <div className="contact-cta">
-      <h3>Direct een afspraak?</h3>
-      <p>Stuur ons een WhatsApp bericht of bel ons op. Wij reageren doorgaans binnen enkele uren en plannen graag een afspraak in die bij u past.</p>
-      <a href="https://wa.me/31600000000?text=Hallo%20Quality%20Cleaning%2C%20ik%20wil%20graag%20een%20offerte%20aanvragen" className="whatsapp-btn" target="_blank">
+    <div className="contact-cta contact-cta-with-form">
+      <h3>E-mail uw aanvraag</h3>
+      <p className="contact-form-intro">
+        Laat uw gegevens achter — wij reageren zo snel mogelijk (doorgaans binnen
+        één werkdag).
+      </p>
+      <LeadForm source="homepage" />
+      <p className="contact-quick-label">Liever direct?</p>
+      <div className="contact-quick-actions">
+      <a href="https://wa.me/31600000000?text=Hallo%20Quality%20Cleaning%2C%20ik%20wil%20graag%20een%20offerte%20aanvragen" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Stuur een WhatsApp bericht
+        WhatsApp
       </a>
       <a href="tel:+31600000000" className="tel-btn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.36a16 16 0 006.72 6.72l1.72-1.72a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        Bel ons direct
+        Bellen
       </a>
+      </div>
     </div>
   </div>
 </section>
-
-
-<footer>
-  <div className="footer-logo">Quality <span>Cleaning</span></div>
-  <p>© 2026 Quality Cleaning — Professionele reiniging, heel Nederland</p>
-  <nav>
-    <ul>
-      <li><a href="#diensten">Diensten</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</footer>
     </>
   );
 }

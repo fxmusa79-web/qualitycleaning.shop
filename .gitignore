@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# leads storage (admin)
+/data/leads.jsonl
+/data/analytics.jsonl
