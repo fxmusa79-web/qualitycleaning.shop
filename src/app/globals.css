@@ -1479,7 +1479,7 @@
   }
 
   .tinsights-badge img {
-    height: 28px;
+    height: 36px;
     width: auto;
     display: block;
   }
@@ -1702,7 +1702,7 @@
       gap: 10px;
     }
     .tinsights-badge img {
-      height: 24px;
+      height: 32px;
     }
     .contact-cta {
       padding: 28px;
