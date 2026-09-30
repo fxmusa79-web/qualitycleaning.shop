@@ -39,14 +39,14 @@ Maak `.env.local` aan in de projectroot (staat in `.gitignore` — nooit committ
 NEXT_PUBLIC_SITE_URL=https://qualitycleaning.shop
 
 # Resend (domein geverifieerd op qualitycleaning.shop)
-RESEND_API_KEY=re_NuGg4DyZ_LQeR2dyjx3gEoCzDJdcRFXkf
+RESEND_API_KEY=re_VERVANG_MET_NIEUWE_SLEUTEL
 RESEND_FROM_EMAIL=noreply@qualitycleaning.shop
 CONTACT_TO_EMAIL=info@qualitycleaning.shop
 
 # Admin /scotdejews — VERANDER DIT vóór live!
 ADMIN_USERNAME=admin
-ADMIN_PASSWORD=admin
-ADMIN_SESSION_SECRET=vervang-dit-met-een-lang-random-geheim
+ADMIN_PASSWORD=VERVANG_MET_STERK_WACHTWOORD
+ADMIN_SESSION_SECRET=VERVANG_MET_MINIMAAL_32_WILLEKEURIGE_TEKENS
 ```
 
 > **Belangrijk op de VPS:** wijzig `ADMIN_USERNAME`, `ADMIN_PASSWORD` en `ADMIN_SESSION_SECRET` direct naar sterke waarden.

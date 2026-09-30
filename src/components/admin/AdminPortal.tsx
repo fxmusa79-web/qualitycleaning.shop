@@ -75,8 +75,8 @@ export function AdminPortal({ initialAuthed, initialLeads }: Props) {
   /* ── refresh traffic manually ── */
   const loadTraffic = useCallback(() => {
     void fetch("/api/admin/analytics", { credentials: "include" })
-      .then(r => r.ok ? r.json() : null)
-      .then((d: { views: PageView[] } | null) => {
+      .then(r => r.ok ? r.json() as Promise<{ views: PageView[] }> : null)
+      .then((d) => {
         if (!d) return;
         setViews(d.views ?? []);
         setTrafficLoaded(true);
@@ -89,8 +89,8 @@ export function AdminPortal({ initialAuthed, initialLeads }: Props) {
     /* Fetch analytics data and update component state asynchronously */
     const run = () => {
       void fetch("/api/admin/analytics", { credentials: "include" })
-        .then(r => r.ok ? r.json() : null)
-        .then((d: { views: PageView[] } | null) => {
+        .then(r => r.ok ? r.json() as Promise<{ views: PageView[] }> : null)
+        .then((d) => {
           if (!d) return;
           setViews(d.views ?? []);
           setTrafficLoaded(true);

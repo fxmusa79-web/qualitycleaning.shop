@@ -1,5 +1,4 @@
-import { mkdir, appendFile, readFile, writeFile } from "fs/promises";
-import path from "path";
+import { env } from "cloudflare:workers";
 
 export type Lead = {
   id: string;
@@ -12,64 +11,72 @@ export type Lead = {
   source?: string;
 };
 
-const LEADS_PATH = path.join(process.cwd(), "data", "leads.jsonl");
+type LeadRow = {
+  id: string;
+  created_at: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  service: string | null;
+  message: string;
+  source: string | null;
+};
+
+function rowToLead(r: LeadRow): Lead {
+  return {
+    id: r.id,
+    createdAt: r.created_at,
+    name: r.name,
+    email: r.email,
+    phone: r.phone ?? undefined,
+    service: r.service ?? undefined,
+    message: r.message,
+    source: r.source ?? undefined,
+  };
+}
 
 export async function appendLead(
   input: Omit<Lead, "id" | "createdAt">,
 ): Promise<Lead> {
-  await mkdir(path.dirname(LEADS_PATH), { recursive: true });
   const row: Lead = {
     id: crypto.randomUUID(),
     createdAt: new Date().toISOString(),
     ...input,
   };
-  await appendFile(LEADS_PATH, `${JSON.stringify(row)}\n`, "utf8");
+  const db = env.DB;
+  await db
+    .prepare(
+      `INSERT INTO leads (id, created_at, name, email, phone, service, message, source)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+    )
+    .bind(
+      row.id,
+      row.createdAt,
+      row.name,
+      row.email,
+      row.phone ?? null,
+      row.service ?? null,
+      row.message,
+      row.source ?? "website",
+    )
+    .run();
   return row;
 }
 
 /** Nieuwste eerst */
 export async function readLeads(): Promise<Lead[]> {
-  try {
-    const raw = await readFile(LEADS_PATH, "utf8");
-    const rows = raw
-      .trim()
-      .split("\n")
-      .filter(Boolean)
-      .map((line) => JSON.parse(line) as Lead);
-    return rows.sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-    );
-  } catch {
-    return [];
-  }
+  const db = env.DB;
+  const result = await db
+    .prepare("SELECT * FROM leads ORDER BY created_at DESC")
+    .all<LeadRow>();
+  return (result.results ?? []).map(rowToLead);
 }
 
 export async function deleteLeadById(id: string): Promise<boolean> {
-  try {
-    const raw = await readFile(LEADS_PATH, "utf8");
-    const lines = raw.trim().split("\n").filter(Boolean);
-    let removed = false;
-    const kept = lines.filter((line) => {
-      try {
-        const o = JSON.parse(line) as Lead;
-        if (o.id === id) {
-          removed = true;
-          return false;
-        }
-        return true;
-      } catch {
-        return true;
-      }
-    });
-    if (!removed) return false;
-    await writeFile(
-      LEADS_PATH,
-      kept.length ? `${kept.join("\n")}\n` : "",
-      "utf8",
-    );
-    return true;
-  } catch {
-    return false;
-  }
+  const db = env.DB;
+  const result = await db
+    .prepare("DELETE FROM leads WHERE id = ?")
+    .bind(id)
+    .run();
+  return (result.meta?.changes ?? 0) > 0;
 }
