@@ -1451,10 +1451,44 @@
   .site-footer-bar {
     border-top: 1px solid var(--border-soft);
     padding: 18px 48px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
     font-size: 13px;
     color: var(--text-label);
     background: var(--bg-page);
+  }
+
+  /* TINSIGHTS badge */
+  @keyframes tinsights-float {
+    0%   { opacity: 0.28; transform: translateY(0px); }
+    50%  { opacity: 0.45; transform: translateY(-3px); }
+    100% { opacity: 0.28; transform: translateY(0px); }
+  }
+
+  .tinsights-badge {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.28;
+    transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+    animation: tinsights-float 4s ease-in-out infinite;
+    filter: grayscale(30%);
+    flex-shrink: 0;
+  }
+
+  .tinsights-badge img {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+
+  .tinsights-badge:hover {
+    opacity: 0.85;
+    filter: grayscale(0%);
+    transform: translateY(-1px) scale(1.04);
+    animation-play-state: paused;
   }
 
   /* Placeholderpagina's */
@@ -1662,6 +1696,13 @@
     }
     .site-footer-bar {
       padding: 16px 24px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+    .tinsights-badge img {
+      height: 24px;
     }
     .contact-cta {
       padding: 28px;

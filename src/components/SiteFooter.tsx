@@ -81,6 +81,20 @@ export function SiteFooter() {
         <p>
           © {new Date().getFullYear()} Quality Cleaning. Alle rechten voorbehouden.
         </p>
+        <a
+          href="https://tinsightsagency.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="tinsights-badge"
+          aria-label="Website gebouwd door TINSIGHTS"
+        >
+          <img
+            src="/tinsights-badge.png"
+            alt="Built by TINSIGHTS"
+            width={140}
+            height={40}
+          />
+        </a>
       </div>
     </footer>
   );
