@@ -7,6 +7,9 @@ export default defineConfig({
     compatibilityDate: "2026-09-30",
     compatibilityFlags: ["nodejs_compat"],
     assets: { notFoundHandling: "none" },
+    domains: ["qualitycleaning.shop"],
+    workersDev: false,
+    previewUrls: false,
     env: {
       ASSETS: bindings.assets(),
       IMAGES: bindings.images(),
