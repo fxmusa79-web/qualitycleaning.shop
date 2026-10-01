@@ -10,7 +10,8 @@
     "dev:vinext": "vite dev --port 3001",
     "build:vinext": "vite build",
     "start:vinext": "vite preview",
-    "deploy:vinext": "vinext-cloudflare deploy"
+    "deploy:vinext": "vinext-cloudflare deploy",
+    "postinstall": "node scripts/patch-cf-strict.mjs"
   },
   "dependencies": {
     "@vinext/cloudflare": "^1.0.0",
