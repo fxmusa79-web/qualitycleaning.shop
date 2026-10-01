@@ -3,9 +3,10 @@ import Link from "next/link";
 import { PlaceholderPage } from "@/components/PlaceholderPage";
 
 export const metadata: Metadata = {
-  title: "Zonnepanelen reinigen — maximaal rendement met osmosewater",
+  title: "Zonnepanelen reinigen Groningen — maximaal rendement",
   description:
-    "Zonnepanelen reinigen met zuiver osmosewater: geen zeep, geen resten, maximaal rendement. Mobiele service in heel Nederland.",
+    "Zonnepanelen reinigen in Groningen met zuiver osmosewater. Geen zeep, geen resten — tot 30% meer rendement. Mobiele service, bel 06-49988924.",
+  alternates: { canonical: "/zonnepanelen-reinigen" },
 };
 
 export default function ZonnepanelenReinigenPage() {

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { PlaceholderPage } from "@/components/PlaceholderPage";
 
 export const metadata: Metadata = {
-  title: "Diensten",
+  title: "Alle reinigingsdiensten — Quality Cleaning Groningen",
   description:
-    "Gevelreiniging, glazenwassen, zonnepanelen en autoreiniging met osmosewater — mobiel bij u op locatie.",
+    "Overzicht van alle diensten: gevelreiniging, glazenwassen, zonnepanelen reinigen en autoreiniging. Mobiel bij u op locatie met osmosewater.",
 };
 
 export default function DienstenPage() {

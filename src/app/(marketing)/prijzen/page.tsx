@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { PlaceholderPage } from "@/components/PlaceholderPage";
 
 export const metadata: Metadata = {
-  title: "Prijzen",
+  title: "Prijzen & tarieven reiniging — Quality Cleaning Groningen",
   description:
-    "Transparante tarieven voor autoreiniging, zonnepanelen en maatwerk.",
+    "Transparante tarieven voor autoreiniging, zonnepanelen, gevelreiniging en glazenwassen. Vraag een vrijblijvende offerte aan — geen verborgen kosten.",
 };
 
 export default function PrijzenPage() {

@@ -3,9 +3,10 @@ import Link from "next/link";
 import { PlaceholderPage } from "@/components/PlaceholderPage";
 
 export const metadata: Metadata = {
-  title: "Gevelreiniging — professioneel mos en algen verwijderen",
+  title: "Gevelreiniging Groningen — mos, algen en aanslag verwijderen",
   description:
-    "Professionele gevelreiniging met osmosewater en hogedruk. Mos, algen en aanslag verwijderen bij particulieren en bedrijven — mobiel in Nederland.",
+    "Professionele gevelreiniging in Groningen en omstreken. Mos, algen en aanslag verwijderen met osmosewater en hogedruk — mobiel bij u thuis, bel 06-49988924.",
+  alternates: { canonical: "/gevelreiniging" },
 };
 
 export default function GevelreinigingPage() {

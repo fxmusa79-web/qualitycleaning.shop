@@ -46,21 +46,23 @@ export function SiteFooter() {
           <ul className="site-footer-contact">
             <li>
               <span className="site-footer-label">Telefoon</span>
-              <a href="tel:+31600000000">+31 6 00 00 00 00</a>
-              <span className="site-footer-note">(placeholder — vul uw nummer in)</span>
+              <a href="tel:+31649988924">06-49988924</a>
             </li>
             <li>
               <span className="site-footer-label">E-mail</span>
-              <a href="mailto:info@qualitycleaning.nl">info@qualitycleaning.nl</a>
-              <span className="site-footer-note">(placeholder)</span>
+              <a href="mailto:info@qualitycleaning.shop">info@qualitycleaning.shop</a>
+            </li>
+            <li>
+              <span className="site-footer-label">Vestiging</span>
+              <span>Groningen &amp; omstreken</span>
             </li>
             <li>
               <span className="site-footer-label">KvK</span>
-              <span>[KvK-nummer — nog invullen]</span>
+              <span>Volgt spoedig</span>
             </li>
             <li>
               <span className="site-footer-label">BTW</span>
-              <span>[BTW-id — nog invullen]</span>
+              <span>Volgt spoedig</span>
             </li>
           </ul>
         </div>

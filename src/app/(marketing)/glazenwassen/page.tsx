@@ -3,9 +3,10 @@ import Link from "next/link";
 import { PlaceholderPage } from "@/components/PlaceholderPage";
 
 export const metadata: Metadata = {
-  title: "Glazenwassen & glazenwasser aan huis",
+  title: "Glazenwasser Groningen — ramen & kozijnen aan huis",
   description:
-    "Professionele glazenwasser voor ramen, kozijnen en serres. Mobiel in Nederland met osmosewater — straalvrij drogen zonder zeepresten.",
+    "Professionele glazenwasser in Groningen: ramen, kozijnen en serres aan huis. Mobiel met osmosewater — straalvrij drogen zonder zeepresten.",
+  alternates: { canonical: "/glazenwassen" },
 };
 
 export default function GlazenwassenPage() {

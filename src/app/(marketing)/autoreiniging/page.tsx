@@ -3,9 +3,10 @@ import Link from "next/link";
 import { PlaceholderPage } from "@/components/PlaceholderPage";
 
 export const metadata: Metadata = {
-  title: "Autoreiniging aan huis — professionele autowas bij u thuis",
+  title: "Autoreiniging aan huis Groningen — professionele autowas",
   description:
-    "Professionele autoreiniging aan huis met osmosewater: geen waterstrepen, geen kalkvlekken. Mobiel bij u thuis of op kantoor in heel Nederland.",
+    "Professionele autoreiniging in Groningen: exterieur wassen met osmosewater aan huis of op kantoor. Geen waterstrepen, vlekkeloos resultaat.",
+  alternates: { canonical: "/autoreiniging" },
 };
 
 export default function AutoreinigingPage() {

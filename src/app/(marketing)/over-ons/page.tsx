@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { PlaceholderPage } from "@/components/PlaceholderPage";
 
 export const metadata: Metadata = {
-  title: "Over ons",
+  title: "Over ons — Quality Cleaning Groningen",
   description:
-    "Quality Cleaning: mobiele reiniging met Telewash en osmosewater.",
+    "Quality Cleaning is een mobiel reinigingsbedrijf uit Groningen met Telewash-installatie en osmosewater technologie. Leer ons kennen.",
 };
 
 export default function OverOnsPage() {
