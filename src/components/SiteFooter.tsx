@@ -6,6 +6,7 @@ const FOOTER_NAV = [
   { href: "/glazenwassen",          label: "Glazenwassen" },
   { href: "/zonnepanelen-reinigen", label: "Zonnepanelen reinigen" },
   { href: "/autoreiniging",         label: "Autoreiniging" },
+  { href: "/projecten",             label: "Projecten & galerij" },
   { href: "/werkwijze",             label: "Werkwijze" },
   { href: "/prijzen",               label: "Prijzen" },
   { href: "/over-ons",              label: "Over ons" },
