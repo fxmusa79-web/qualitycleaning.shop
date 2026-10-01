@@ -23,7 +23,7 @@ export default function ContactPage() {
         </li>
         <li>
           <strong>E-mail:</strong>{" "}
-          <a href="mailto:info@qualitycleaning.shop">info@qualitycleaning.shop</a>
+          <a href="mailto:info@qualitycleaning050.nl">info@qualitycleaning050.nl</a>
         </li>
         <li>
           <strong>WhatsApp:</strong>{" "}

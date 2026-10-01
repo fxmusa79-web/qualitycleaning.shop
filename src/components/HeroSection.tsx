@@ -20,7 +20,7 @@ export function HeroSection() {
         </p>
         <div className="hero-actions">
           <a
-            href="https://wa.me/31600000000?text=Hallo%2C%20ik%20wil%20graag%20een%20offerte%20aanvragen"
+            href="https://wa.me/31649988924?text=Hallo%2C%20ik%20wil%20graag%20een%20offerte%20aanvragen"
             className="btn-primary"
             target="_blank"
             rel="noopener noreferrer"

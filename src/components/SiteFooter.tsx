@@ -50,19 +50,15 @@ export function SiteFooter() {
             </li>
             <li>
               <span className="site-footer-label">E-mail</span>
-              <a href="mailto:info@qualitycleaning.shop">info@qualitycleaning.shop</a>
+              <a href="mailto:info@qualitycleaning050.nl">info@qualitycleaning050.nl</a>
             </li>
             <li>
-              <span className="site-footer-label">Vestiging</span>
-              <span>Groningen &amp; omstreken</span>
+              <span className="site-footer-label">Adres</span>
+              <span>Iepenlaan 61, 9741 GB Groningen</span>
             </li>
             <li>
               <span className="site-footer-label">KvK</span>
-              <span>Volgt spoedig</span>
-            </li>
-            <li>
-              <span className="site-footer-label">BTW</span>
-              <span>Volgt spoedig</span>
+              <span>91172314</span>
             </li>
           </ul>
         </div>

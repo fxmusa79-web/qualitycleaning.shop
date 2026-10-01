@@ -667,16 +667,12 @@
     overflow: hidden;
   }
   .over-visual::before {
-    content: 'QC';
+    content: '';
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 180px;
-    font-weight: 300;
-    color: rgba(29,158,117,0.06);
-    letter-spacing: -0.05em;
-    white-space: nowrap;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.3));
+    z-index: 1;
+    pointer-events: none;
   }
   .over-visual::after {
     content: '';
@@ -1594,6 +1590,280 @@
   }
   .page-shell-back a:hover {
     color: var(--primary);
+  }
+
+  /* =========================================================
+     SERVICE PAGES — hero photo, grid, before/after
+  ========================================================= */
+  .page-shell--wide {
+    max-width: 1100px;
+  }
+  .service-header {
+    margin-bottom: 40px;
+  }
+  .service-header-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+  .service-hero-photo {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 48px;
+    aspect-ratio: 16 / 9;
+  }
+  .service-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .service-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0 40px;
+  }
+  .service-photo-grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .service-photo-grid--3col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .service-photo-item {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+  }
+  .service-photo-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+  }
+  .service-photo-item figcaption {
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .before-after-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 28px 0 40px;
+  }
+  .before-after-item {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+  }
+  .before-after-item .service-photo-img {
+    height: 280px;
+  }
+  .before-after-item figcaption {
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--text-label);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ba-label {
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .ba-label--before {
+    background: #fee2e2;
+    color: #b42318;
+  }
+  .ba-label--after {
+    background: #dcfce7;
+    color: #166534;
+  }
+  .over-quote-block {
+    border-left: 3px solid var(--primary);
+    padding: 16px 24px;
+    margin: 28px 0;
+    background: var(--bg-card);
+    border-radius: 0 12px 12px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-heading);
+    line-height: 1.5;
+  }
+
+  /* OVER-ONS photo in visual box */
+  .over-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
+
+  /* =========================================================
+     VOOR/NA SECTIE — homepage
+  ========================================================= */
+  .voor-na {
+    padding: 80px var(--section-pad);
+    background: var(--bg-accent);
+  }
+  .voor-na-intro {
+    max-width: 560px;
+    color: var(--text-body);
+    font-size: 17px;
+    margin-top: 16px;
+    margin-bottom: 40px;
+  }
+  .voor-na-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .voor-na-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .voor-na-pair > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .voor-na-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    aspect-ratio: 4 / 3;
+  }
+  .voor-na-item + .voor-na-item {
+    border-radius: 0 0 12px 12px;
+    margin-top: 3px;
+  }
+  .voor-na-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .voor-na-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  .voor-na-badge.voor {
+    background: rgba(180,35,24,0.85);
+    color: #fff;
+  }
+  .voor-na-badge.na {
+    background: rgba(22,101,52,0.85);
+    color: #fff;
+  }
+  .voor-na-caption {
+    padding: 12px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-heading);
+    text-align: center;
+  }
+
+  /* =========================================================
+     GALERIJ SECTIE — homepage
+  ========================================================= */
+  .galerij {
+    padding: 80px var(--section-pad);
+    background: var(--bg-page);
+  }
+  .galerij-intro {
+    max-width: 560px;
+    color: var(--text-body);
+    font-size: 17px;
+    margin-top: 16px;
+    margin-bottom: 40px;
+  }
+  .galerij-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .galerij-item {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .galerij-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  }
+  .galerij-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+  .galerij-item figcaption {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--text-label);
+    font-weight: 500;
+  }
+
+  /* RESPONSIVE — service pages & galerij */
+  @media (max-width: 768px) {
+    .service-photo-grid,
+    .service-photo-grid--3col {
+      grid-template-columns: 1fr 1fr;
+    }
+    .service-photo-grid--2col {
+      grid-template-columns: 1fr;
+    }
+    .before-after-grid {
+      grid-template-columns: 1fr;
+    }
+    .voor-na-grid {
+      grid-template-columns: 1fr;
+    }
+    .galerij-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .service-header-actions {
+      flex-direction: column;
+    }
+    .over-quote-block {
+      font-size: 18px;
+    }
+  }
+  @media (max-width: 480px) {
+    .service-photo-grid,
+    .service-photo-grid--3col,
+    .galerij-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* ANIMATIONS */

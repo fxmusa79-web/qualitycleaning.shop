@@ -73,9 +73,11 @@ const localBusinessSchema = {
     "Mobiele reiniging met osmosewater: gevelreiniging, glazenwassen, zonnepanelen reinigen en autoreiniging.",
   url: siteUrl,
   telephone: "+31649988924",
-  email: "info@qualitycleaning.shop",
+  email: "info@qualitycleaning050.nl",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Iepenlaan 61",
+    postalCode: "9741 GB",
     addressLocality: "Groningen",
     addressRegion: "Groningen",
     addressCountry: "NL",

@@ -219,13 +219,89 @@ export default function Home() {
       </div>
     </div>
     <div className="over-visual">
-      <div className="telewash-info">
-        <h4>Telewash Technologie</h4>
-        <p>Osmosewater reiniging — 0 ppm zuiverheid</p>
+      <img
+        src="/images/quality-cleaning-medewerker-groningen.jpg"
+        alt="Quality Cleaning medewerker in Groningen met logo en telescoopsteel"
+        className="over-photo"
+        loading="lazy"
+      />
+      <div className="osmose-badge">
+        <strong>0 ppm</strong>
+        <span>Osmosewater kwaliteit</span>
       </div>
     </div>
   </div>
 </section>
+
+
+{/* VOOR/NA SECTIE */}
+<section className="voor-na" id="resultaten">
+  <div className="section-tag">Bewezen resultaat</div>
+  <h2>Vóór &amp; <em>na</em></h2>
+  <p className="voor-na-intro">Echte projecten, echte resultaten — bij particulieren en bedrijven in Groningen.</p>
+
+  <div className="voor-na-grid">
+    <div className="voor-na-pair">
+      <div className="voor-na-item">
+        <img src="/images/garage-deur-voor-reiniging.jpg" alt="Garagedeur vóór reiniging — vuil en aangetast" loading="lazy" />
+        <span className="voor-na-badge voor">Vóór</span>
+      </div>
+      <div className="voor-na-item">
+        <img src="/images/garage-deur-na-reiniging.jpg" alt="Garagedeur ná reiniging — schoon resultaat" loading="lazy" />
+        <span className="voor-na-badge na">Na</span>
+      </div>
+      <p className="voor-na-caption">Garagedeur reiniging</p>
+    </div>
+
+    <div className="voor-na-pair">
+      <div className="voor-na-item">
+        <img src="/images/bedrijfspand-reiniging-voor.jpg" alt="Bedrijfspand vóór reiniging Groningen" loading="lazy" />
+        <span className="voor-na-badge voor">Vóór</span>
+      </div>
+      <div className="voor-na-item">
+        <img src="/images/bedrijfspand-reiniging-na.jpg" alt="Bedrijfspand ná reiniging — stralend" loading="lazy" />
+        <span className="voor-na-badge na">Na</span>
+      </div>
+      <p className="voor-na-caption">Bedrijfspand — gevel &amp; glas</p>
+    </div>
+  </div>
+</section>
+
+
+{/* FOTO GALERIJ */}
+<section className="galerij" id="galerij">
+  <div className="section-tag">Ons werk</div>
+  <h2>Recente <em>projecten</em></h2>
+  <p className="galerij-intro">Hieronder een selectie van recente reinigingsprojecten in en rondom Groningen.</p>
+
+  <div className="galerij-grid">
+    <figure className="galerij-item">
+      <img src="/images/glazenwassen-hoog-bereik-telescoop.jpg" alt="Hoge ramen bereiken met telescoopsteel — glazenwasser Groningen" loading="lazy" />
+      <figcaption>Glazenwassen op hoogte</figcaption>
+    </figure>
+    <figure className="galerij-item">
+      <img src="/images/glazenwassen-schuifpui-schoon.jpg" alt="Schuifpui en glasdeuren gereinigd met osmosewater" loading="lazy" />
+      <figcaption>Schuifpui &amp; glasdeuren</figcaption>
+    </figure>
+    <figure className="galerij-item">
+      <img src="/images/gevelreiniging-flatgebouw-hogedruk.jpg" alt="Gevelreiniging flatgebouw Groningen hogedruk" loading="lazy" />
+      <figcaption>Gevelreiniging — flatgebouw</figcaption>
+    </figure>
+    <figure className="galerij-item">
+      <img src="/images/woning-gevel-schoon-groningen.jpg" alt="Woning gevel schoon in Groningen" loading="lazy" />
+      <figcaption>Woning gevel &amp; ramen</figcaption>
+    </figure>
+    <figure className="galerij-item">
+      <img src="/images/serre-veranda-gereinigd.jpg" alt="Serre en veranda beglazing gereinigd — Groningen" loading="lazy" />
+      <figcaption>Serre &amp; veranda reiniging</figcaption>
+    </figure>
+    <figure className="galerij-item">
+      <img src="/images/bedrijfspand-glazenwassen-detail.jpg" alt="Bedrijfspand glazenwassen detail Groningen" loading="lazy" />
+      <figcaption>Zakelijk — bedrijfspanden</figcaption>
+    </figure>
+  </div>
+</section>
+
 
 
 <section className="contact" id="contact">
